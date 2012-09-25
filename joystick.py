@@ -1,28 +1,9 @@
-#required programs: (assuming 32 bit python 2.7, there are installs for each)
-# http://www.python.org/ftp/python/2.7.3/python-2.7.3.msi
-# http://pygame.org/ftp/pygame-1.9.1.win32-py2.7.msi
-# http://iweb.dl.sourceforge.net/project/pywin32/pywin32/Build%20217/pywin32-217.win32-py2.7.exe
-
-
-#todo, find correct joystick automatically
-	# re-style event code to work better instead of calling getaxis
-	# test 1:1 solution models, maybe even 1:1 + 1:v + 1:v^3 mixes?
-	# test exponential sensitivity
-	#	fit to fitts' law? 
-	# data is now being sent to game, but for some reason it's not as expected: follow up
-	# normalization bias issue (assuming 0,0 to be "true" normal)
-	# graphing to display current data instead of spamming console
-	
-
 #generated from best cubic fit of three values i guessed, plus (0,0) obviously
 cubicSensitivity=46
 #quadraticSensitivity=100
 linearSensitivity=4.8 #lower because cubics are multiples of [0..1]
 sensitivity_exponent=1	#wut
-
 normalizationTolerance=.02
-
-
 invert=1   #1 for non-inversion -1 for inversion
 
 import pygame
