@@ -17,13 +17,21 @@ joystick_count=pygame.joystick.get_count()
 if joystick_count == 0:
 	# No joysticks!
 	print ("Error, I didn't find any joysticks.")
-#elif joystick_count>1:
+else:
+	index=0
+	success_init_joystick=True
+	while success_init_joystick and index < joystick_count:
+		try:
+			my_joystick = pygame.joystick.Joystick(index)
+			success_init_joystick=True
+			index+=1
+		except Exception:
+			success_init_joystick=False
+			
 	#todo
 	#print("multiple joysticks, please touch the one you want to use")
-else:
-	# Use joystick #0 and initialize it
-	my_joystick = pygame.joystick.Joystick(0)
-	my_joystick.init()
+
+my_joystick.init()
 
 
 
@@ -63,9 +71,19 @@ while done==False:
 		elif event.type == pygame.JOYBUTTONDOWN and event.button == 1:
 			win32api.mouse_event(win32con.MOUSEEVENTF_RIGHTDOWN,0,0,0,0)
 		elif event.type == pygame.JOYBUTTONUP and event.button == 2:
-			win32api.mouse_event(win32con.MOUSEEVENTF_MIDDLEUP,0,0,0,0)
+			win32api.mouse_event(0x0100,0,0,0x0001,0)
 		elif event.type == pygame.JOYBUTTONDOWN and event.button == 2:
+			win32api.mouse_event(0x0080,0,0,0x0001,0)
+		elif event.type == pygame.JOYBUTTONUP and event.button == 4:
+			win32api.mouse_event(0x0100,0,0,0x0002,0)
+		elif event.type == pygame.JOYBUTTONDOWN and event.button == 4:
+			win32api.mouse_event(0x0080,0,0,0x0002,0)
+		elif event.type == pygame.JOYBUTTONUP and event.button == 3:
+			win32api.mouse_event(win32con.MOUSEEVENTF_MIDDLEUP,0,0,0,0)
+		elif event.type == pygame.JOYBUTTONDOWN and event.button == 3:
 			win32api.mouse_event(win32con.MOUSEEVENTF_MIDDLEDOWN,0,0,0,0)
+			
+		
 	# As long as there is a joystick
 	if joystick_count != 0:
 	 
@@ -114,4 +132,5 @@ while done==False:
 	#pygame.display.flip()
 	#clock.tick(40)
 	sleep(.01)
+
 pygame.quit ()
