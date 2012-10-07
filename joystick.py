@@ -19,8 +19,8 @@ if joystick_count == 0:
 	print ("Error, I didn't find any joysticks.")
 else:
 	index=0
-	success_init_joystick=True
-	while success_init_joystick and index < joystick_count:
+	success_init_joystick=False
+	while not success_init_joystick and index < joystick_count:
 		try:
 			my_joystick = pygame.joystick.Joystick(index)
 			success_init_joystick=True
