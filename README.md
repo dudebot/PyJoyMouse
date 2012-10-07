@@ -18,8 +18,8 @@ Install PyJoyMouse yourself to contribute and use it for your own needs.
 
 ### Execution
 
-Run run.bat as admin to execute the program. If your environment variables are configured correctly the same outcome can be achieved by running cmd as admin and then execute `python joystick.py`.
+Run run.bat as admin to execute the program (ctrl-> right click). If your environment variables are configured correctly the same outcome can be achieved by running cmd as admin and then execute `python joystick.py`.
 
 ### Known Issues
 
-If the program gives an error about not being able to connect to a joystick and one is clearly connected, change the line `my_joystick = pygame.joystick.Joystick(0)` to `my_joystick = pygame.joystick.Joystick(1)`.
+Sensitivity is not yet adjustable
